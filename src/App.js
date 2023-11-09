@@ -22,7 +22,7 @@ function App() {
     if (file && file.name.endsWith('.csv')) {
       setLightningFile(file);
     } else {
-      alert('Please upload a CSV file for lightning data TEST.');
+      alert('Please upload a CSV file for lightning data.');
     }
   };
 
