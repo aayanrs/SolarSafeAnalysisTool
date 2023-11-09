@@ -1,0 +1,90 @@
+.App {
+  text-align: center;
+  margin: 20px;
+}
+
+.buffering-bar {
+  background-color: #0077ff;
+  width: 50%;
+  height: 10px;
+  margin: 20px auto;
+}
+
+/* Set the background color to black */
+body {
+  background-color: #000; /* Black background */
+  color: #fff; /* White text color */
+  font-size: 18px; /* Adjust the font size as needed */
+}
+
+/* Increase the font size for buttons */
+button {
+  font-size: 18px; /* Adjust the font size as needed */
+}
+
+/* Styles for the disabled button */
+button.disabled-button {
+  background-color: #ffffff; /* Change the background color to gray for disabled state */
+  color: #000000; /* Change the text color to a darker gray for disabled state */
+  cursor: not-allowed; /* Change the cursor to not-allowed for disabled state */
+}
+
+
+/* Increase the size of file input elements (Browse buttons) */
+input[type="file"] {
+  font-size: 18px; /* Adjust the font size as needed */
+  padding: 10px; /* Increase padding to make the button larger */
+  border: 2px solid #0077ff; /* Add a border for better visibility */
+}
+
+/* Set the color of the title to green */
+h1 {
+  color: #33cc33; /* Green text color for the title */
+}
+
+/* Set the color of the "SolarSafe" text to green */
+.solar-safe-text {
+  color: #33cc33; /* Green text color for "SolarSafe" */
+  font-size: 24px
+}
+
+/* Set the color of the "names" text to green */
+.names-text {
+  color: #33cc33; /* Green text color for "SolarSafe" */
+  font-size: 18px
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
