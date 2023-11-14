@@ -71,9 +71,9 @@ function App() {
     if (fileName) {
       const lowerCaseFileName = fileName.toLowerCase();
       
-      if (lowerCaseFileName === 'testcsv.csv') {
+      if (lowerCaseFileName === 'soildata_fl_synthetic.csv') {
         return 4; // FL SOIL
-      } else if (lowerCaseFileName === 'testcsv_1.csv') {
+      } else if (lowerCaseFileName === 'soildata_ga_synthetic.csv') {
         return 2; // GA SOIL
       }
     }
@@ -85,9 +85,9 @@ function App() {
     if (fileName) {
       const lowerCaseFileName = fileName.toLowerCase();
       
-      if (lowerCaseFileName === 'testcsv_3.csv') {
+      if (lowerCaseFileName === 'lightningdata_ga_synthetic.csv') {
         return 1; //  GA LIGHTNING
-      } else if (lowerCaseFileName === 'testcsv_4.csv') {
+      } else if (lowerCaseFileName === 'lightningdata_fl_synthetic.csv') {
         return 3; // FL LIGHTNING
       }
     }
@@ -108,16 +108,28 @@ function App() {
           <p style={{ textDecoration: 'underline' }}>Follow the steps below to use this tool:</p>
           <ul style={{ listStyleType: 'none' }}>
             <li style={{ marginBottom: '10px', paddingLeft: '20px' }}>
-              <span style={{ textDecoration: 'underline' }}>Step 1:</span> Go to www.SOILWEBSITE.COM and do XYZ.
+              <span style={{ textDecoration: 'underline' }}>
+                Step 1:</span> Go to <a href="https://soilgrids.org/" target="_blank" rel="noopener noreferrer">https://soilgrids.org/</a>.
             </li>
             <li style={{ marginBottom: '10px', paddingLeft: '20px' }}>
-              <span style={{ textDecoration: 'underline' }}>Step 2:</span> Proceed to do XYZ at said website.
+              <span style={{ textDecoration: 'underline' }}>Step 2:</span> Select a location by clicking on the map.
             </li>
             <li style={{ marginBottom: '10px', paddingLeft: '20px' }}>
-              <span style={{ textDecoration: 'underline' }}>Step 3:</span> Go to www.LIGHTNING/WEATHER-WEBSITE.COM and do XYZ.
+              <span style={{ textDecoration: 'underline' }}>Step 3:</span> Select download and navigate to the WoSIS tab.
             </li>
             <li style={{ marginBottom: '10px', paddingLeft: '20px' }}>
-              <span style={{ textDecoration: 'underline' }}>Step 4:</span> You get the message, need a good set of instructions
+              <span style={{ textDecoration: 'underline' }}>Step 4:</span>  Download CVS files for the specific latitudes and longitudes of interest for all the layers.
+            </li>
+            <li style={{ marginBottom: '10px', paddingLeft: '20px' }}>
+              <span style={{ textDecoration: 'underline' }}>Step 5:</span>  Upload the files below.
+            </li>
+            <li style={{ marginBottom: '10px', paddingLeft: '20px' }}>
+              <span style={{ textDecoration: 'underline' }}>
+                Step 6:</span> Go to <a href="https://www.xweather.com/annual-lightning-report" target="_blank" 
+                rel="noopener noreferrer">https://www.xweather.com/annual-lightning-report</a>.
+            </li>
+            <li style={{ marginBottom: '10px', paddingLeft: '20px' }}>
+              <span style={{ textDecoration: 'underline' }}>Step 7:</span>  Extract ground flash density and peak current values for location, and upload as CSV.
             </li>
           </ul>
           <div>
@@ -229,14 +241,18 @@ function App() {
             </div>
             <div style={{ width: '80%', margin: '20px 0' }}>
               <p style={{ fontSize: '20px', textAlign: 'center' }}>
-                Grounding Recommendation: {timeFrame === 'current' ? 'Woah!!! Enter grounding for curr here' : 
-                (timeFrame === 'future' ? 'Hey!!! Enter grounding for future here' : 'Insert basic grounding recommendations depending on the number outputted')}
+                Grounding Recommendation: {timeFrame === 'current' ? 'The site features a limited grounding capacity, posing challenges in effectively dissipating electrical currents. It is not good for grounding.' : 
+                (timeFrame === 'future' ? 'The site demonstrates a high electrical grounding ability, allowing for dissipation of electrical currents. It is good for grounding.'
+                 : 'Insert basic grounding recommendations depending on the number outputted')}
                 </p>
             </div>
             <div style={{ width: '80%', margin: '20px 0' }}>
               <p style={{ fontSize: '20px', textAlign: 'center' }}>
-                Lightning Protection Recommendation: {timeFrame === 'current' ? 'What!!! Enter the LPS for curr here' : 
-                (timeFrame === 'future' ? 'Crazy!!! Enter the LPS for future here' : 'Insert basic lightning recommendations depending on the number outputted')}
+                Lightning Protection Recommendation: 
+                {timeFrame === 'current' ? ': Locate strike termination devices (including air terminals, masts, and overhead ground wires) adjacent to the solar panels in such a manner as to place the solar panels in a zone of protection '
+                 : 
+                (timeFrame === 'future' ? ' Direct mounting of strike termination devices to each solar array rack. This includes the implementation of air terminals mounted on conducting solar array racks, metallic frames that border each panel, loop conductors, and optional ground electrodes. ' 
+                : 'Insert basic lightning recommendations depending on the number outputted')}
                 </p>
             </div>
           </div>
