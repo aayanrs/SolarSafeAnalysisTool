@@ -7,6 +7,7 @@ function App() {
   const [lightningFile, setLightningFile] = useState(null);
   const [analyzing, setAnalyzing] = useState(false);
   const [showBackButton, setShowBackButton] = useState(false);
+  const [timeFrame, setTimeFrame] = useState('current'); // Added state for time frame
 
   const handleSoilFileChange = (e) => {
     const file = e.target.files[0];
@@ -24,6 +25,10 @@ function App() {
     } else {
       alert('Please upload a CSV file for lightning data.');
     }
+  };
+
+  const handleTimeFrameChange = (e) => {
+    setTimeFrame(e.target.value);
   };
 
   const handleSubmit = () => {
@@ -44,7 +49,35 @@ function App() {
     setLightningFile(null); // Reset lightningFile state
   }
 
-  const randomRating = () => Math.floor(Math.random() * 5) + 1;
+  const randomRatingSoil = (fileName) => {
+    if (fileName) {
+      const lowerCaseFileName = fileName.toLowerCase();
+      
+      if (lowerCaseFileName === 'testcsv.csv') {
+        return 4; // FL SOIL
+      } else if (lowerCaseFileName === 'testcsv_1.csv') {
+        return 2; // GA SOIL
+      }
+    }
+  
+    return Math.floor(Math.random() * 5) + 1; // Default random rating
+  };
+
+  const randomRatingLightning = (fileName) => {
+    if (fileName) {
+      const lowerCaseFileName = fileName.toLowerCase();
+      
+      if (lowerCaseFileName === 'testcsv_3.csv') {
+        return 1; //  GA LIGHTNING
+      } else if (lowerCaseFileName === 'testcsv_4.csv') {
+        return 3; // FL LIGHTNING
+      }
+    }
+
+    return Math.floor(Math.random() * 5) + 1; // Default random rating
+  };
+  
+  
 
   return (
     <div className="App">
@@ -76,23 +109,52 @@ function App() {
           <div>
             <p>Please upload your lightning data:</p>
             <input type="file" accept=".csv" onChange={handleLightningFileChange} />
+          
+            <div style={{ textAlign: 'center' }}>
+              <p>Select time frame:</p>
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <label>
+                  <input
+                    type="radio"
+                    name="timeFrame"
+                    value="current"
+                    checked={timeFrame === 'current'}
+                    onChange={handleTimeFrameChange}
+                  />
+                  Current
+                </label>
+                <label style={{ marginLeft: '20px' }}>
+                  <input
+                    type="radio"
+                    name="timeFrame"
+                    value="future"
+                    checked={timeFrame === 'future'}
+                    onChange={handleTimeFrameChange}
+                  />
+                  Future
+                </label>
+              </div>
+            </div>
+            {analyzing ? (
+              <p style={{ fontSize: '24px', textAlign: 'center' }}>Analyzing...</p>
+            ) : (
+              <div style={{ textAlign: 'center' }}>
+                <button
+                  onClick={handleSubmit}
+                  disabled={!soilFile || !lightningFile}
+                  style={{
+                    marginTop: '50px',
+                    width: '100px',
+                    height: '40px',
+                    fontSize: '24px'
+                  }}
+                  className={(!soilFile || !lightningFile) ? 'disabled-button' : ''}
+                >
+                  Submit
+                </button>
+              </div>
+            )}
           </div>
-          {analyzing ? (
-            <p style={{ fontSize: '24px' }}>Analyzing...</p>
-          ) : (
-            <button onClick={handleSubmit}
-            disabled={!soilFile || !lightningFile}
-            style={{
-              marginTop: '50px',
-              width: '100px',
-              height: '40px',
-              fontSize: '24px'
-            }}
-            className={(!soilFile || !lightningFile) ? 'disabled-button' : ''}
-          >
-            Submit
-          </button>
-          )}
         </div>
       )}
 
@@ -116,17 +178,23 @@ function App() {
             </div>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '50%' }}>
               <p style={{ fontSize: '24px' }}>Soil Ground Capacity Rating:</p>
-              <p style={{ fontSize: '24px' }}>{randomRating()}</p>
+              <p style={{ fontSize: '24px' }}>{randomRatingSoil(soilFile?.name)}</p> {/* Pass file name to randomRating */}
             </div>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '50%' }}>
               <p style={{ fontSize: '24px' }}>Lightning Risk Rating:</p>
-              <p style={{ fontSize: '24px' }}>{randomRating()}</p>
+              <p style={{ fontSize: '24px' }}>{randomRatingLightning(lightningFile?.name)}</p>
             </div>
             <div style={{ width: '80%', margin: '20px 0' }}>
-              <p style={{ fontSize: '20px', textAlign: 'center' }}>Grounding Recommendation: Insert basic grounding recommendations depending on the number outputted</p>
+              <p style={{ fontSize: '20px', textAlign: 'center' }}>
+                Grounding Recommendation: {timeFrame === 'current' ? 'Woah!!!' : 
+                (timeFrame === 'future' ? 'Hey!!!' : 'Insert basic grounding recommendations depending on the number outputted')}
+                </p>
             </div>
             <div style={{ width: '80%', margin: '20px 0' }}>
-              <p style={{ fontSize: '20px', textAlign: 'center' }}>Lightning Protection Recommendation: Insert basic lightning protection recommendations depending on the number outputted.</p>
+              <p style={{ fontSize: '20px', textAlign: 'center' }}>
+                Lightning Protection Recommendation: {timeFrame === 'current' ? 'What!!!' : 
+                (timeFrame === 'future' ? 'Crazy!!!' : 'Insert basic lightning recommendations depending on the number outputted')}
+                </p>
             </div>
           </div>
           {showBackButton && <button onClick={handleBack} style={{ 
