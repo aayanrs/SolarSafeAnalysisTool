@@ -8,6 +8,9 @@ function App() {
   const [analyzing, setAnalyzing] = useState(false);
   const [showBackButton, setShowBackButton] = useState(false);
   const [timeFrame, setTimeFrame] = useState('current'); // Added state for time frame
+  const [elevation, setElevation] = useState(''); // Added state for elevation
+  const [area, setArea] = useState(''); // Added state for area
+  const [solarPanels, setSolarPanels] = useState(''); // Added state for solar panels
 
   const handleSoilFileChange = (e) => {
     const file = e.target.files[0];
@@ -31,6 +34,18 @@ function App() {
     setTimeFrame(e.target.value);
   };
 
+  const handleElevationChange = (e) => {
+    setElevation(e.target.value);
+  };
+
+  const handleAreaChange = (e) => {
+    setArea(e.target.value);
+  };
+
+  const handleSolarPanelsChange = (e) => {
+    setSolarPanels(e.target.value);
+  };
+
   const handleSubmit = () => {
     if (soilFile && lightningFile) {
       setAnalyzing(true);
@@ -45,9 +60,12 @@ function App() {
     setCurrentPage(1);
     setShowBackButton(false);
     setAnalyzing(false);
-    setSoilFile(null); // Reset soilFile state
-    setLightningFile(null); // Reset lightningFile state
-  }
+    setSoilFile(null);
+    setLightningFile(null);
+    setElevation('');
+    setArea('');
+    setSolarPanels('');
+  };
 
   const randomRatingSoil = (fileName) => {
     if (fileName) {
@@ -109,11 +127,36 @@ function App() {
           <div>
             <p>Please upload your lightning data:</p>
             <input type="file" accept=".csv" onChange={handleLightningFileChange} />
-          
+
+            <div style={{ textAlign: 'center' }}>
+              {/* ... (previous code) */}
+              <p style={{ fontSize: '20px' }}>Elevation of your site (meters):</p>
+              <input
+                type="number"
+                value={elevation}
+                onChange={handleElevationChange}
+                style={{ fontSize: '18px', width: '100px', height: '25px' }}
+              />
+              <p style={{ fontSize: '20px' }}>Area of your site (acres):</p>
+              <input
+                type="number"
+                value={area}
+                onChange={handleAreaChange}
+                style={{ fontSize: '18px', width: '100px', height: '25px' }}
+              />
+              <p style={{ fontSize: '20px' }}>Estimated amount of solar panels on site:</p>
+              <input
+                type="number"
+                value={solarPanels}
+                onChange={handleSolarPanelsChange}
+                style={{ fontSize: '18px', width: '100px', height: '25px' }}
+              />
+            </div>
+            
             <div style={{ textAlign: 'center' }}>
               <p>Select time frame:</p>
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                <label>
+                <label style={{ fontSize: '22px' }}>
                   <input
                     type="radio"
                     name="timeFrame"
@@ -123,7 +166,7 @@ function App() {
                   />
                   Current
                 </label>
-                <label style={{ marginLeft: '20px' }}>
+                <label style={{ marginLeft: '20px', fontSize: '22px' }}>
                   <input
                     type="radio"
                     name="timeFrame"
@@ -143,7 +186,7 @@ function App() {
                   onClick={handleSubmit}
                   disabled={!soilFile || !lightningFile}
                   style={{
-                    marginTop: '50px',
+                    marginTop: '30px',
                     width: '100px',
                     height: '40px',
                     fontSize: '24px'
@@ -186,14 +229,14 @@ function App() {
             </div>
             <div style={{ width: '80%', margin: '20px 0' }}>
               <p style={{ fontSize: '20px', textAlign: 'center' }}>
-                Grounding Recommendation: {timeFrame === 'current' ? 'Woah!!!' : 
-                (timeFrame === 'future' ? 'Hey!!!' : 'Insert basic grounding recommendations depending on the number outputted')}
+                Grounding Recommendation: {timeFrame === 'current' ? 'Woah!!! Enter grounding for curr here' : 
+                (timeFrame === 'future' ? 'Hey!!! Enter grounding for future here' : 'Insert basic grounding recommendations depending on the number outputted')}
                 </p>
             </div>
             <div style={{ width: '80%', margin: '20px 0' }}>
               <p style={{ fontSize: '20px', textAlign: 'center' }}>
-                Lightning Protection Recommendation: {timeFrame === 'current' ? 'What!!!' : 
-                (timeFrame === 'future' ? 'Crazy!!!' : 'Insert basic lightning recommendations depending on the number outputted')}
+                Lightning Protection Recommendation: {timeFrame === 'current' ? 'What!!! Enter the LPS for curr here' : 
+                (timeFrame === 'future' ? 'Crazy!!! Enter the LPS for future here' : 'Insert basic lightning recommendations depending on the number outputted')}
                 </p>
             </div>
           </div>

@@ -10,6 +10,11 @@
   margin: 20px auto;
 }
 
+p {
+  font-size: 22px; /* You can adjust the size as needed */
+}
+
+
 /* Set the background color to black */
 body {
   background-color: #000; /* Black background */
@@ -51,7 +56,7 @@ h1 {
 /* Set the color of the "names" text to green */
 .names-text {
   color: #33cc33; /* Green text color for "SolarSafe" */
-  font-size: 18px
+  font-size: 20px
 }
 
 .App-logo {
