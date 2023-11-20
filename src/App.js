@@ -108,7 +108,7 @@ function App() {
           alt="Team Logo"
           style={{ flex: 1, maxWidth: '20%', height: 'auto', marginRight: '10px' }}
         />
-        <h1 style={{ flex: 1, textAlign: 'center', marginTop: '-200px' }}>Solar Site Viability Assessment Tool (Prototype)</h1>
+        <h1 style={{ textAlign: 'center', fontSize: '2em', margin: '10px 0', marginTop: '-200px' }}>Solar Site Viability Assessment Tool (Prototype)</h1>
         <img
           src={companyLogo}
           alt="Company Logo"
@@ -117,7 +117,7 @@ function App() {
       </div>
       {currentPage === 1 && (
         <div>
-          <p className="solar-safe-text" style={{ marginTop: '-220px', marginBottom: '20px' }}>SolarSafe</p>
+          <p className="solar-safe-text" style={{ fontSize: '1.5em', marginTop: '-200px' }}>SolarSafe</p>
           <p className= "names-text">Created by: Aayan Siddiqui, Sasha Sanchez, Sarah Daly, Phillip Ordonez, Phillip Thompson</p>
           <h2>Instructions</h2>
           <p style={{ textDecoration: 'underline' }}>Follow the steps below to use this tool:</p>
