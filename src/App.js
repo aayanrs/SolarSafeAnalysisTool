@@ -118,7 +118,7 @@ function App() {
               <span style={{ textDecoration: 'underline' }}>Step 3:</span> Select download and navigate to the WoSIS tab.
             </li>
             <li style={{ marginBottom: '10px', paddingLeft: '20px' }}>
-              <span style={{ textDecoration: 'underline' }}>Step 4:</span>  Download CVS files for the specific latitudes and longitudes of interest for all the layers.
+              <span style={{ textDecoration: 'underline' }}>Step 4:</span>  Download CSV files for the specific latitudes and longitudes of interest for all the layers.
             </li>
             <li style={{ marginBottom: '10px', paddingLeft: '20px' }}>
               <span style={{ textDecoration: 'underline' }}>Step 5:</span>  Upload the files below.
@@ -129,7 +129,8 @@ function App() {
                 rel="noopener noreferrer">https://www.xweather.com/annual-lightning-report</a>.
             </li>
             <li style={{ marginBottom: '10px', paddingLeft: '20px' }}>
-              <span style={{ textDecoration: 'underline' }}>Step 7:</span>  Extract ground flash density and peak current values for location, and upload as CSV.
+              <span style={{ textDecoration: 'underline' }}>
+                Step 7:</span>  Extract ground flash density and peak current values for location, and upload as CSV.
             </li>
           </ul>
           <div>
@@ -249,7 +250,7 @@ function App() {
             <div style={{ width: '80%', margin: '20px 0' }}>
               <p style={{ fontSize: '20px', textAlign: 'center' }}>
                 Lightning Protection Recommendation: 
-                {timeFrame === 'current' ? ': Locate strike termination devices (including air terminals, masts, and overhead ground wires) adjacent to the solar panels in such a manner as to place the solar panels in a zone of protection '
+                {timeFrame === 'current' ? ' Locate strike termination devices (including air terminals, masts, and overhead ground wires) adjacent to the solar panels in such a manner as to place the solar panels in a zone of protection '
                  : 
                 (timeFrame === 'future' ? ' Direct mounting of strike termination devices to each solar array rack. This includes the implementation of air terminals mounted on conducting solar array racks, metallic frames that border each panel, loop conductors, and optional ground electrodes. ' 
                 : 'Insert basic lightning recommendations depending on the number outputted')}
