@@ -117,7 +117,7 @@ function App() {
       </div>
       {currentPage === 1 && (
         <div>
-          <p className="solar-safe-text" style={{ marginTop: '-220px' }}>SolarSafe</p>
+          <p className="solar-safe-text" style={{ marginTop: '-220px', marginBottom: '20px' }}>SolarSafe</p>
           <p className= "names-text">Created by: Aayan Siddiqui, Sasha Sanchez, Sarah Daly, Phillip Ordonez, Phillip Thompson</p>
           <h2>Instructions</h2>
           <p style={{ textDecoration: 'underline' }}>Follow the steps below to use this tool:</p>
