@@ -238,7 +238,7 @@ function App() {
 
       {currentPage === 3 && (
         <div>
-        <h2>Results</h2>
+        <h2 style={{ textAlign: 'center', marginTop: '-150px' }}>Results</h2>
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', width: '50%' }}>
               <p>1: Not Suitable</p>
