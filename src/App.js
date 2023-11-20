@@ -1,4 +1,7 @@
 import React, { useState } from 'react';
+import teamLogo from './images/teamlogo.png'; // adjust the path and filename
+import companyLogo from './images/nexteralogo.png';
+
 import './App.css';
 
 function App() {
@@ -99,7 +102,19 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Solar Site Viability Assessment Tool (Prototype)</h1>
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        <img
+          src={teamLogo}
+          alt="Team Logo"
+          style={{ width: '250px', height: '250px', marginLeft: '260px' }}
+        />
+      <h1 style={{ margin: '0 20px' }}>Solar Site Viability Assessment Tool (Prototype)</h1>
+      <img
+        src={companyLogo}
+        alt="Company Logo"
+        style={{ width: '450px', height: '150px', marginLeft: '100px' }}
+      />
+    </div>
       {currentPage === 1 && (
         <div>
           <p className="solar-safe-text">SolarSafe</p>
